@@ -14,14 +14,14 @@ function Homepage() {
 
     return (
         <>
-            <section className='showcase'>
+            <section className='showcase' id='Homepage'>
                 <div className="overlay">
                     <article className='text-white ' >
                         {company && <><h1 data-text='All the SpaceX Capsule data in one place' className='heading text-center capitalize'>All the SpaceX Capsule data in one place</h1>
                             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto mt-10 lg:gap-20 px-5 ">
 
                                 <article>
-                                    <h2 className='font-bold border-b-2 border-white text-xl mb-3 pb-2 uppercase tracking-wider' >Ablout</h2>
+                                    <h2 className='font-bold border-b-2 border-white text-xl mb-3 pb-2 uppercase tracking-wider' >About</h2>
                                     <ul className='text-sm opacity-75' >
                                         <li className='mb-1' >{company.name} was founded by </li>
                                         <li className='mb-1'>{company.founder} in the year</li>

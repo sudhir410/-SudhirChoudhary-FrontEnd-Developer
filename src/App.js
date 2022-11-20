@@ -1,18 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Error, Homepage } from './pages'
+import React, { useState } from 'react';
+
+import { Homepage, Capsules, Search } from './pages'
 import { Header } from './components'
 
 import './App.css';
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='*' element={<Error />} />
 
-      </Routes>
-    </BrowserRouter>
+function App() {
+  const [value, setValue] = useState("")
+  const [filterType, setFilterType] = useState("")
+  return (
+    <>
+      <Header />
+      <Homepage />
+      <Search setValue={setValue} setFilterType={setFilterType} filterType={filterType} />
+      <Capsules filterType={filterType} value={value} />
+    </>
   );
 }
 
