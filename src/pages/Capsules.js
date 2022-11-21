@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-
+import PopUp from './PopUp'
 
 function Capsules({ filterType, value }) {
     const [capsules, setCapsules] = useState([])
     const [currrentItems, setCurrentItems] = useState(null)
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItesmOffset] = useState(0)
+    const [togglePopup, setTogglePopup] = useState(false)
+    const [data, setData] = useState({})
     const itemsperpage = 6
 
 
@@ -52,18 +54,21 @@ function Capsules({ filterType, value }) {
             <section className='capsulesContainer py-10 ' id='capsules'>
                 <h1 className='heading text-center mb-3'> Capsules</h1>
                 <div className='max-width text-white grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 px-5'>
-                    {currrentItems && currrentItems.map(({ id, type, status, capsule_serial, original_launch, details, landings, missions, reuse_count }) => (
-                        <article key={capsule_serial} className='articles cursor-pointer' >
-                            <h2 className='text-xl font-bold mb-5'>{type},<span className='text-base opacity-75 font-light'>{capsule_serial}</span></h2>
+                    {currrentItems && currrentItems.map((val) => (
+                        <article onClick={() => {
+                            setData(val)
+                            setTogglePopup(!togglePopup)
+                        }} key={val.capsule_serial} className='articles cursor-pointer' >
+                            <h2 className='text-xl font-bold mb-5'>{val.type},<span className='text-base opacity-75 font-light'>{val.capsule_serial}</span></h2>
                             <ul>
-                                <li className='mb-1'>Launch Date :{original_launch} </li>
-                                <li className='mb-1'>{landings} land landings</li>
-                                <li className='mb-1'>{missions.length} missions</li>
-                                <li className='mb-1'>Reused {reuse_count}</li>
-                                {status === 'active' ? <li className='text-emerald-500'>Active</li > : <li className='text-rose-500'>Retired</li>}
-                                <li></li>
+                                <li className='mb-1'>Launch Date :{val.original_launch} </li>
+                                <li className='mb-1'>{val.landings} land landings</li>
+                                <li className='mb-1'>{val.missions.length} missions</li>
+                                <li className='mb-1'>Reused {val.reuse_count}</li>
+                                {val.status === 'active' ? <li className='text-emerald-500'>Active</li > : <li className='text-rose-500'>Retired</li>}
+
                             </ul>
-                            <p className='mt-3 opacity-75'>{details}</p>
+                            <p className='mt-3 opacity-75'>{val.details}</p>
                         </article>
                     ))}
                 </div>
@@ -91,6 +96,7 @@ function Capsules({ filterType, value }) {
                         />
                     </div>
                 </div>
+                {togglePopup && <PopUp data={data}  setTogglePopup={setTogglePopup}/>}
             </section>
         </>
     )

@@ -23,11 +23,7 @@ body {
   @apply text-white font-bold text-3xl md:text-4xl xl:text-5xl;
 }
 
-.headerContainer{
-  position: fixed;
-  top: 0;
-  z-index: 100;
-}
+
 p{
   line-height: 1.8;
   @apply text-sm;  
@@ -52,6 +48,15 @@ p{
     height: 100vh;
     
   }
+  .capsulesContainer{
+    height: 100vh;
+  }
+  .footerContainer{
+    height: 30vh;
+    @apply text-white
+    bg-slate-600;
+    padding-top: 1rem;
+  }
 }
 .max-width{
   @apply max-w-6xl mx-auto
@@ -62,7 +67,7 @@ p{
   height: 14.5rem;
 }
 .capsulesContainer{
-  height: 100vh;
+  height: 100%;
  
 }
 
@@ -95,4 +100,25 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footerContainer{
+  height: 100%;
+  @apply text-white
+  bg-slate-800;
+  padding-top: 1rem;
+}
+
+.popUpContainer{
+  width: 40rem;
+  height: auto;
+}
+.popUpContainer header{
+  border-radius: 0.3rem;
+}
+
+.popupMainContainer{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }

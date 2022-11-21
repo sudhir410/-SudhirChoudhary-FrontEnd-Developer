@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { Homepage, Capsules, Search } from './pages'
-import { Header } from './components'
-
+import { Header, Footer } from './components'
 import './App.css';
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
       <Homepage />
       <Search setValue={setValue} setFilterType={setFilterType} filterType={filterType} />
       <Capsules filterType={filterType} value={value} />
+      <Footer />
     </>
   );
 }
